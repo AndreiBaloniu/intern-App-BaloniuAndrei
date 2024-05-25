@@ -1,0 +1,90 @@
+.usersContainer {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.userItem {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.userGender {
+  font-size: 14px;
+  color: #666;
+}
+
+.loadButton {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #205b9e;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  flex-direction: row;
+}
+
+.loadButton:hover {
+  background-color:  #11315c;
+  transition-duration: 0.2s;
+  justify-content: center;
+}
+
+.genderSelector {
+  display: flex;
+  flex-direction: column; /* Change to column for stacking label and select */
+  align-items: flex-start; /* Align items to the start */
+  padding: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.genderSelector label {
+  margin-bottom: 5px; /* Add spacing between label and select */
+  font-weight: bold;
+  color: #333;
+}
+
+.genderSelector select {
+  width: 100%; /* Make select take full width */
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.genderSelector select:focus {
+  border-color: #205b9e;
+  outline: none;
+}
+
+.loading {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+}
