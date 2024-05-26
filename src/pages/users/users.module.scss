@@ -1,3 +1,66 @@
+
+
+.usersContainer {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loadButton {
+  background-color: var(--button-background);
+  &:hover {
+    background-color: var(--button-hover);
+  }
+}
+
+.spinner {
+  border: 6px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.6s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.userItem {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.userItem-exit {
+  animation: fadeOut 0.5s ease-out;
+}
+
 .usersContainer {
   padding: 20px;
   background-color: #f9f9f9;
@@ -51,8 +114,8 @@
 
 .genderSelector {
   display: flex;
-  flex-direction: column; /* Change to column for stacking label and select */
-  align-items: flex-start; /* Align items to the start */
+  flex-direction: column; 
+  align-items: flex-start; 
   padding: 10px;
   background-color: #e0e0e0;
   border-radius: 5px;
@@ -60,13 +123,13 @@
 }
 
 .genderSelector label {
-  margin-bottom: 5px; /* Add spacing between label and select */
+  margin-bottom: 5px; 
   font-weight: bold;
   color: #333;
 }
 
 .genderSelector select {
-  width: 100%; /* Make select take full width */
+  width: 100%; 
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -80,6 +143,71 @@
 .genderSelector select:focus {
   border-color: #205b9e;
   outline: none;
+}
+
+.loading {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+}
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 6px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spinner 0.6s linear infinite;
+  margin: 20px auto;
+}
+.genderSelector {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.genderSelector label {
+  margin-bottom: 5px; 
+  font-weight: bold;
+  color: #333;
+}
+
+.genderSelector select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.genderSelector select:focus {
+  border-color: #205b9e;
+  outline: none;
+}
+
+.searchBar {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.searchBar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 .loading {

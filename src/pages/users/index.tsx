@@ -23,25 +23,25 @@ const Users = () => {
   const [pageToGet, setPageToGet] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isInitialLoading, setIsInitialLoading] = useState<boolean>(true);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const getUsers = async (page: number) => {
     if (isInitialLoading) {
       setIsInitialLoading(true);
     } else {
-      setIsLoading(true); 
+      setIsLoading(true);
     }
-    
+
     const result = await fetch(
       `${currentEnvironment.api.baseUrl}?results=5&gender=${gender}&page=${String(page)}`
     );
     const data = await result.json();
-    console.log(data);
     const usersResults = data.results as User[];
 
     setUsers((oldUsers) => (page === 1 ? usersResults : [...oldUsers, ...usersResults]));
-    
-    setIsLoading(false); 
-    setIsInitialLoading(false); 
+
+    setIsLoading(false);
+    setIsInitialLoading(false);
   };
 
   useEffect(() => {
@@ -50,10 +50,14 @@ const Users = () => {
     })();
   }, [pageToGet, gender]);
 
+  const filteredUsers = users.filter(user =>
+    user.name.first.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    user.name.last.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className={styles.usersContainer}>
       <div className={styles.genderSelector}>
-
         <label htmlFor="gender">Select Gender</label>
         <select
           id="gender"
@@ -68,14 +72,21 @@ const Users = () => {
           <option value="female">Female</option>
           <option value="male">Male</option>
         </select>
-        <label>Users: </label>
+      </div>
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
       {isInitialLoading ? (
         <div className={styles.loading}>Loading...</div>
       ) : (
         <ul>
-          {users.length > 0
-            ? users.map((user: User) => (
+          {filteredUsers.length > 0
+            ? filteredUsers.map((user: User) => (
               <li key={user.login.uuid} className={styles.userItem}>
                 <span className={styles.userName}>
                   {user.name.first} {user.name.last}
@@ -88,7 +99,7 @@ const Users = () => {
             : <li>No users found.</li>}
         </ul>
       )}
-      {isLoading && !isInitialLoading && <div className={styles.loading}>Loading more...</div>}
+      {isLoading && !isInitialLoading && <div className={styles.loading}>Loading more...</div>    && <div className={styles.spinner}></div>}
       <button
         className={styles.loadButton}
         type="button"
